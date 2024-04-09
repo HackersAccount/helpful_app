@@ -1,57 +1,47 @@
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
-  runApp(const MyApp());
+import 'pages/converter_home.dart';
+
+void main() {
+  runApp(const ZIGtoUSDConverter());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ZIGtoUSDConverter extends StatelessWidget {
+  const ZIGtoUSDConverter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MyContainerWidget();
-  }
-}
-
-class DataItem {
-  final String title;
-  final String subTitle;
-  final String url;
-
-  DataItem({required this.title, required this.subTitle, required this.url});
-}
-
-class DataView {
-  final DataItem item = DataItem(
-      title: 'Helloo', subTitle: "subtitle", url: 'Internet not available.');
-}
-
-class MyContainerWidget extends StatelessWidget {
-  MyContainerWidget({super.key});
-  final DataView data = DataView();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: 180,
-      color: Colors.black,
-      child: Column(
-        children: [
-          // Image.network(data.item.url),
-          Text(
-            data.item.url,
-            style: const TextStyle(fontSize: 32, color: Colors.orange),
+    return MaterialApp(
+      title: 'ZIG to USD Converter',
+      theme: ThemeData(
+        primarySwatch: const MaterialColor(
+          0xFFFFD800,
+          <int, Color>{
+            50: Color(0xFFFFF9C4),
+            100: Color(0xFFFFF59D),
+            200: Color(0xFFFFF176),
+            300: Color(0xFFFFEE58),
+            400: Color(0xFFFFEB3B),
+            500: Color(0xFFFFE600),
+            600: Color(0xFFFFE600),
+            700: Color(0xFFFFD600),
+            800: Color(0xFFFFC400),
+            900: Color(0xFFFFB300),
+          },
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          centerTitle: true,
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          fillColor: Color(0xFFF5F5F5),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
-          Text(
-            data.item.title,
-            style: const TextStyle(fontSize: 20, color: Colors.white),
-          ),
-          Text(
-            data.item.title,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
-          )
-        ],
+        ),
       ),
+      home: const ConverterHomePage(),
     );
   }
 }
